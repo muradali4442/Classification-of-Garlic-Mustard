@@ -37,7 +37,7 @@ testloader = torch.utils.data.DataLoader(dataset, batch_size=4,
 model = models.resnet18(pretrained = True)
 num_ftrs = model.fc.in_features
 model.fc = nn.Linear(num_ftrs, 2)
-model.load_state_dict(torch.load('2_stage_model.pt'))
+model.load_state_dict(torch.load('.pt'))
 model.eval()
 
 writer = SummaryWriter('eval_runs')
@@ -72,4 +72,4 @@ model_output['true_label'] = list(labs)
 
 #Plot and save data
 plt.hist(model_output['f_prob'], bins=100)
-model_output.to_csv('eval_output_2.csv')
+model_output.to_csv('2_stage_eval_putput.csv')
