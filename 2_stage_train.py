@@ -111,18 +111,18 @@ class_names = datasets['Train'].classes
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 #Load model
-model_ft = models.resnet18(pretrained=True)
+model_ft = models.resnet50(pretrained=True)
 num_ftrs = model_ft.fc.in_features
 model_ft.fc = nn.Linear(num_ftrs, 2)
 model_ft = model_ft.to(device)
 criterion = nn.CrossEntropyLoss()
-optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
+optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.0001, momentum=0.9)
 exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
 
 #Train Model
 writer = SummaryWriter()
 model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,
                        num_epochs = 1)
-torch.save(model_ft.state_dict(), '2_stage_model.pt')
+torch.save(model_ft.state_dict(), '2_stage_output.pt')
 writer.flush()
 writer.close()
