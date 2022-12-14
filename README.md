@@ -3,7 +3,7 @@ Classification of Garlic Mustard plant whether it's flowering or non flowering. 
 
 The packages used are
 NumPy,
-Pandas.
-Scikit-learn
-PyTorch
-Matplotlib
+Pandas,
+Scikit-learn,
+PyTorch,
+Matplotlib,
